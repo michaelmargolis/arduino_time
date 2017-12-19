@@ -294,7 +294,12 @@ void setTime(int hr,int min,int sec,int dy, int mnth, int yr){
   tm.Hour = hr;
   tm.Minute = min;
   tm.Second = sec;
-  setTime(makeTime(tm));
+
+  //We're setting cacheTime so it's all consistent with tm because the two are linked. Check how refreshCache() works to see.
+  cacheTime = makeTime(tm);
+  
+  setTime(cacheTime);  
+  
 }
 
 void adjustTime(long adjustment) {
